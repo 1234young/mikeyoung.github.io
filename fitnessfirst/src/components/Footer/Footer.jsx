@@ -1,11 +1,23 @@
+import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../assets/fitness.webp';
 
-export default function Footer() {
+export default function Footer({ onLogout }) {
+  const navigate = useNavigate();
+
+  // Check if user is logged in to decide whether to show logout button
+  const user = localStorage.getItem('user');
+
+  const handleLogout = () => {
+    localStorage.removeItem('user'); //  Clear session
+    onLogout();                      //  Tell App.jsx: isLoggedIn = false
+    navigate('/');                   //  Send user back to home
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
-        
+
         {/* LOGO */}
         <div className="footer-brand">
           <img src={logo} alt="Fitness Brand Logo" />
@@ -27,11 +39,27 @@ export default function Footer() {
         <div className="footer-socials">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="https://www.instagram.com" target='_blank' aria-label="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
-            <a href="https://www.twitter.com" target='_blank' aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.facebook.com" target='_blank' aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com" target='_blank' aria-label="Instagram">
+              <i className="fa-brands fa-square-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com" target='_blank' aria-label="Twitter">
+              <i className="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com" target='_blank' aria-label="Facebook">
+              <i className="fa-brands fa-facebook"></i>
+            </a>
           </div>
         </div>
+
+        {/* LOGOUT — only shows when user is logged in */}
+        {user && (
+          <div className="footer-logout">
+            <h4>Account</h4>
+            <button className="logout-btn" onClick={handleLogout}>
+              <i className="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+          </div>
+        )}
 
       </div>
 

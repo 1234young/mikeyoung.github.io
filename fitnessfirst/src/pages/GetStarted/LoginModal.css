@@ -31,7 +31,16 @@
   color: #fff;
   text-align: center;
 }
+.login-message.error  { color: #ff4d4d; }
+.login-message.success { color: #4caf50; }
 
+.register-link {
+  color: #f97316;       /* orange to match your theme */
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.register-link:hover { color: #ea6c00; }
 
 .login-modal h2 {
   margin-bottom: 0.3rem;
