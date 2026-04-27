@@ -1,0 +1,186 @@
+
+.trainers {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #0a1f44, #0d2a66);
+  color: #eaf2ff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+
+.trainers-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.trainers-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff, #fdd20f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.trainers-header p {
+  color: #b8c9ff;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.trainer-card {
+  position: relative;
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: linear-gradient(145deg, #022d83, #0a1f44);
+
+  /* Engraved + glass */
+  box-shadow:
+    inset 6px 6px 14px rgba(0, 0, 0, 0.6),
+    inset -6px -6px 14px rgba(255, 255, 255, 0.06),
+    0 20px 40px rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition: all 0.7s ease;
+}
+
+/* Glass overlay */
+.trainer-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.02)
+  );
+  pointer-events: none;
+}
+
+/* Reveal */
+.trainer-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+.trainer-card img {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.2rem;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.trainer-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(90deg, #ffffff, #fdd20f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.trainer-card span {
+  font-size: 1rem;
+  color: #7fb2ff;
+}
+
+.trainer-card p {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #d6e2ff;
+  line-height: 1.6;
+}
+
+
+.trainer-card.popular {
+  box-shadow:
+    inset 6px 6px 14px rgba(0, 0, 0, 0.7),
+    inset -6px -6px 14px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(90, 160, 255, 0.75);
+  border: 1px solid rgba(120, 180, 255, 0.4);
+}
+
+/*Responsive Phone */
+@media (max-width: 480px) {
+
+  .trainers-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .trainer-card img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .trainer-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .trainer-card p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .trainers {
+    padding: 3.5rem 1.2rem;
+  }
+
+  .trainers-header h2 {
+    font-size: 2rem;
+  }
+
+  .trainers-header p {
+    font-size: 0.95rem;
+  }
+
+  .trainers-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .trainer-card {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .trainer-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .trainer-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .trainer-card span {
+    font-size: 0.9rem;
+  }
+
+  .trainer-card p {
+    font-size: 0.88rem;
+  }
+}
