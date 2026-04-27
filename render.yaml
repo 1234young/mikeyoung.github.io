@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: fitnessfirst-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+
+    # Environment variables — add these in Render dashboard under Environment tab
+    # Do NOT hardcode secrets here — set them in the Render UI
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_MODE
+        value: cloud
+      - key: PORT
+        value: 5000
+      # Set these in Render dashboard (secret values):
+      # JWT_SECRET
+      # AIVEN_DB_HOST
+      # AIVEN_DB_PORT
+      # AIVEN_DB_USER
+      # AIVEN_DB_PASSWORD
+      # AIVEN_DB_NAME
+      # CLOUDINARY_CLOUD_NAME
+      # CLOUDINARY_API_KEY
+      # CLOUDINARY_API_SECRET
+      # FRONTEND_URL  ← your Vercel frontend URL e.g. https://fitnessfirst.vercel.app
