@@ -21,7 +21,20 @@ import nutritionRoutes from './routes/nutrition.js';
 
 
 const app  = express();
+
+// ✅ Use Render's dynamic port
 const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("SmartCampus backend running!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 //  SECURITY — Helmet sets safe HTTP headers in one line 
 // Protects against common attacks: clickjacking, XSS, sniffing etc.
